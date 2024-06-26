@@ -58,7 +58,7 @@ Spike is the golden reference functional model for the RISC-V ISA, used for simu
 
 The -o1 command is used for moderate and quick level of optimizations for debugging the code.Focuses on reducing code size and improving execution speed without significantly increasing compilation time or altering the program's behavior.
 
-The output of the Clock Divider Circuit with -o1 Command,
+The output of the Clock Divider Circuit with -o1 Command is done by riscv64-unknown-elf-gcc -o1 -mabi=lp64 -march=rv64i -o clock_divider.o clock_divider.c,
 
 ![Output of Clock Divider with o1 Command](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/9016519b-142a-4315-ba6c-0bc859cd997f)
 
@@ -70,13 +70,13 @@ The Assembly Instructions with -o1 and Spike Command,
 
 ![Assembly code Instruction with o1 Command](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/ef1a26d5-6d31-4841-af85-28b526ee4319)
 
-The output of the Clock Divider Ciruit with -o1 Spike Command,
+The output of the Clock Divider Ciruit with -o1 Spike Command by spike pk clock_divider.o,
 
 ![Output of Clock Divider o1 with Spike Command](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/05cdb040-7542-477b-a404-af60648bb813)
 
 The -ofast command is used for aggressive optimizations, prioritizes performance over strict compliance and accuracy and may lead to non-standard behavior.Focuses on maximizing performance, often at the cost of increased compilation time and potentially altering program behavior in ways that might break standard performance.
 
-The output of Clock Divider Circuit with -ofast Command,
+The output of Clock Divider Circuit with -ofast Command riscv64-unknown-elf-gcc -ofast -mabi=lp64 -march=rv64i -o clock_divider.o clock_divider.c,
 
 ![Output of Clock Divider circuit with oFast](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/30ca3c59-3f21-4588-9988-4bc91e096750)
 
@@ -88,7 +88,7 @@ The Assembly Level Instruction with -ofast and Spike Command,
 
 ![Assembly code Instruction with oFast Spike Command](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/00d57e65-2dea-4213-bfd6-2836b85fb706)
 
-The output of Clock Divider Circuit with -ofast and Spike Command,
+The output of Clock Divider Circuit with -ofast and Spike Command by spike pk clock_divider.c,
 
 ![Outout of Clock Divider Circuit with Spike Command](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/d03e2225-31d1-4607-ae51-d4fea0ba226a)
 
