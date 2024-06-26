@@ -1,5 +1,5 @@
 # Vsdsquadronmini
-Task 1: The first task in this internship is to install leafpad and all other essential things in virtualbox.
+## Task 1: The first task in this internship is to install leafpad and all other essential things in virtualbox.
 The Command for leafpad installation is below,
 
 ![Leafpad installation](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/d9462859-293b-4a55-b83a-5d0b23999862)
@@ -21,7 +21,7 @@ The compiled risc code is below along with address,
 That's the end of the first task.
 
 
-Task 2: The second task in the internship is to write a C program for the Clock Divider Circuit The project which i have selected and compile it to Risc Gcc type.
+## Task 2: The second task in the internship is to write a C program for the Clock Divider Circuit The project which i have selected and compile it to Risc Gcc type.
 First we'll first understand about the Clock Divider circuit,
 
 A clock divider circuit is designed to take an input clock signal and produce an output clock signal with a lower frequency. It divides the frequency of the input clock by a division factor. This is used in digital systems where different components may require different clock speeds.
@@ -52,7 +52,7 @@ riscv64-unknown-elf-objdump -d clock_divider.o | less
 
 That's the end of the second task.
 
-Task 3: In this task we have been instructed to compile the c program with the spike command and observe it with o1 and ofast command,
+## Task 3: In this task we have been instructed to compile the c program with the spike command and observe it with -o1 and -ofast Command.
 
 Spike is the golden reference functional model for the RISC-V ISA, used for simulation and testing of RISC-V software. It is used to compute the output of the program from the Assembly Code Instructions,
 
