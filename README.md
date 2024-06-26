@@ -51,3 +51,45 @@ riscv64-unknown-elf-objdump -d clock_divider.o | less
 ![Reduced Assembly Code Of Clock Divider Circuit](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/5df55664-8fef-4daa-8073-e10408f28584)
 
 That's the end of the second task.
+
+Task 3: In this task we have been instructed to compile the c program with the spike command and observe it with o1 and ofast command,
+
+Spike is the golden reference functional model for the RISC-V ISA, used for simulation and testing of RISC-V software. It is used to compute the output of the program from the Assembly Code Instructions,
+
+The -o1 command is used for moderate and quick level of optimizations for debugging the code.Focuses on reducing code size and improving execution speed without significantly increasing compilation time or altering the program's behavior.
+
+The output of the Clock Divider Circuit with -o1 Command,
+
+![Output of Clock Divider with o1 Command](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/9016519b-142a-4315-ba6c-0bc859cd997f)
+
+The Assembly Code Address with -o1 Command,
+
+![Assembly code Address with o1 Command](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/c57ebb64-a7ed-4a94-b64a-4f35aa1639ac)
+
+The Assembly Instructions with -o1 and Spike Command,
+
+![Assembly code Instruction with o1 Command](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/ef1a26d5-6d31-4841-af85-28b526ee4319)
+
+The output of the Clock Divider Ciruit with -o1 Spike Command,
+
+![Output of Clock Divider o1 with Spike Command](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/05cdb040-7542-477b-a404-af60648bb813)
+
+The -ofast command is used for aggressive optimizations, prioritizes performance over strict compliance and accuracy and may lead to non-standard behavior.Focuses on maximizing performance, often at the cost of increased compilation time and potentially altering program behavior in ways that might break standard performance.
+
+The output of Clock Divider Circuit with -ofast Command,
+
+![Output of Clock Divider circuit with oFast](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/30ca3c59-3f21-4588-9988-4bc91e096750)
+
+The Assembly Code Address with -ofast Command,
+
+![Assembly code Instruction with oFast Command](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/1f1debfa-d9e4-4101-90d8-1b48519c6d84)
+
+The Assembly Level Instruction with -ofast and Spike Command,
+
+![Assembly code Instruction with oFast Spike Command](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/00d57e65-2dea-4213-bfd6-2836b85fb706)
+
+The output of Clock Divider Circuit with -ofast and Spike Command,
+
+![Outout of Clock Divider Circuit with Spike Command](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/d03e2225-31d1-4607-ae51-d4fea0ba226a)
+
+That's the end of the third task.
