@@ -93,3 +93,94 @@ The output of Clock Divider Circuit with -ofast and Spike Command by spike pk cl
 ![Outout of Clock Divider Circuit with Spike Command](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/d03e2225-31d1-4607-ae51-d4fea0ba226a)
 
 That's the end of the third task.
+
+## Task 4: In this task the various types of RISC-V Instructions are observed.
+
+The RISC-V Instruction Set Architecture (ISA) is a free and open ISA that provides a set of instructions for designing processors. RISC-V is designed to support a wide range of applications, from small embedded systems to high-performance computing. It is structured into a base integer instruction set and optional extensions.
+
+The two types of Base Integer Instructions,
+RV32I: The 32-bit base integer instruction set.
+RV64I: The 64-bit base integer instruction set.
+
+RISC-V has several instruction formats, each designed to accommodate different types of operations. The main formats include:
+R-Type: Used for register-register operations.
+I-Type: Used for immediate operations.
+S-Type: Used for store operations.
+B-Type: Used for branch operations.
+U-Type: Used for upper immediate operations.
+J-Type: Used for jump operations.
+
+![RISC-V Instruction Formats](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/b3d21b90-a6fc-4f53-90e2-fb6a6817448b)
+
+Let's see in details about the RISC-V Instruction Formats,
+
+R-Type Instruction Format,
+The R-Type Instruction Format is used for register-register operations.
+The R-Type instruction format consists of six fields:
+funct7: A 7-bit field used to specify the function code for the operation.
+rs2: A 5-bit field used to specify the second source register.
+rs1: A 5-bit field used to specify the first source register.
+funct3: A 3-bit field used to specify the function code for the operation.
+rd: A 5-bit field used to specify the destination register.
+opcode: A 7-bit field used to specify the opcode of the instruction.
+
+![image](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/ccd7fb55-0f20-4f39-9567-95086fa229f0)
+
+I-Type Instruction Format,
+The I-Type (Immediate-Type) instruction format in the RISC-V architecture is used for instructions that involve an immediate value.This format is used for operations such as load instructions, arithmetic instructions with immediate values.
+The I-Type instruction format consists of the following fields:
+imm[11:0]: A 12-bit immediate value.
+rs1: A 5-bit field specifying the source register.
+funct3: A 3-bit field specifying the function code for the operation.
+rd: A 5-bit field specifying the destination register.
+opcode: A 7-bit field specifying the opcode of the instruction.
+
+![image](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/71f240af-86f0-4442-93d2-5d1575a943a3)
+
+S-Type Instruction Format,
+The S-Type (Store-Type) instruction format in the RISC-V architecture is used for store operations, which involve writing data from a register to memory. This format includes a 12-bit immediate value split across two fields.
+The S-Type instruction format consists of the following fields:
+imm[11:5]: The upper 7 bits of the 12-bit immediate value.
+rs2: A 5-bit field specifying the second source register.
+rs1: A 5-bit field specifying the first source register.
+funct3: A 3-bit field specifying the function code for the operation.
+imm[4:0]: The lower 5 bits of the 12-bit immediate value.
+opcode: A 7-bit field specifying the opcode of the instruction.
+
+![image](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/7425f71f-1aac-441f-90bb-d0bf82e57bba)
+
+B-Type Instruction Format,
+The B-Type (Branch-Type) instruction format in the RISC-V architecture is used for conditional branch instructions. This format includes a 12-bit immediate value split across several fields.
+The B-Type instruction format consists of the following fields:
+imm[12]: The 12th bit of the immediate value.
+imm[10:5]: Bits 10 to 5 of the immediate value.
+rs2: A 5-bit field specifying the second source register.
+rs1: A 5-bit field specifying the first source register.
+funct3: A 3-bit field specifying the function code for the operation.
+imm[4:1]: Bits 4 to 1 of the immediate value.
+imm[11]: The 11th bit of the immediate value.
+opcode: A 7-bit field specifying the opcode of the instruction.
+
+![image](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/48e36c22-b600-4ed4-9925-23be24cae4e8)
+
+U-Type Instruction Format,
+The U-Type (Upper Immediate-Type) instruction format in the RISC-V architecture is used for instructions that involve a 20-bit immediate value that is shifted left by 12 bits. This format is used for instructions like LUI (Load Upper Immediate) and AUIPC (Add Upper Immediate to PC).
+The U-Type instruction format consists of the following fields:
+imm[31:12]: A 20-bit immediate value.
+rd: A 5-bit field specifying the destination register.
+opcode: A 7-bit field specifying the opcode of the instruction.
+
+![image](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/f0f1f65d-678f-4f62-a267-b7618b88115d)
+
+J-Type Instruction Format,
+The J-Type (Jump-Type) instruction format in the RISC-V architecture is used for jump instructions, such as JAL (Jump and Link), which combines a large immediate value and an offset for branching.
+The J-Type instruction format consists of the following fields:
+imm[20]: The 20th bit of the immediate value.
+imm[10:1]: Bits 10 to 1 of the immediate value.
+imm[11]: The 11th bit of the immediate value.
+imm[19:12]: Bits 19 to 12 of the immediate value.
+rd: A 5-bit field specifying the destination register.
+opcode: A 7-bit field specifying the opcode of the instruction.
+
+![image](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/563e4267-35fa-4485-8b9b-d4b6262d7026)
+
