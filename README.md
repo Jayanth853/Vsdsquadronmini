@@ -99,15 +99,25 @@ That's the end of the third task.
 The RISC-V Instruction Set Architecture (ISA) is a free and open ISA that provides a set of instructions for designing processors. RISC-V is designed to support a wide range of applications, from small embedded systems to high-performance computing. It is structured into a base integer instruction set and optional extensions.
 
 The two types of Base Integer Instructions,
+
 RV32I: The 32-bit base integer instruction set.
+
 RV64I: The 64-bit base integer instruction set.
 
-RISC-V has several instruction formats, each designed to accommodate different types of operations. The main formats include:
+RISC-V has several instruction formats, each designed to accommodate different types of operations. 
+
+The main formats include:
+
 R-Type: Used for register-register operations.
+
 I-Type: Used for immediate operations.
+
 S-Type: Used for store operations.
+
 B-Type: Used for branch operations.
+
 U-Type: Used for upper immediate operations.
+
 J-Type: Used for jump operations.
 
 ![RISC-V Instruction Formats](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/b3d21b90-a6fc-4f53-90e2-fb6a6817448b)
@@ -116,71 +126,347 @@ Let's see in details about the RISC-V Instruction Formats,
 
 R-Type Instruction Format,
 The R-Type Instruction Format is used for register-register operations.
+
 The R-Type instruction format consists of six fields:
+
 funct7: A 7-bit field used to specify the function code for the operation.
+
 rs2: A 5-bit field used to specify the second source register.
+
 rs1: A 5-bit field used to specify the first source register.
+
 funct3: A 3-bit field used to specify the function code for the operation.
+
 rd: A 5-bit field used to specify the destination register.
+
 opcode: A 7-bit field used to specify the opcode of the instruction.
 
 ![image](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/ccd7fb55-0f20-4f39-9567-95086fa229f0)
 
 I-Type Instruction Format,
 The I-Type (Immediate-Type) instruction format in the RISC-V architecture is used for instructions that involve an immediate value.This format is used for operations such as load instructions, arithmetic instructions with immediate values.
+
 The I-Type instruction format consists of the following fields:
+
 imm[11:0]: A 12-bit immediate value.
+
 rs1: A 5-bit field specifying the source register.
+
 funct3: A 3-bit field specifying the function code for the operation.
+
 rd: A 5-bit field specifying the destination register.
+
 opcode: A 7-bit field specifying the opcode of the instruction.
 
 ![image](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/71f240af-86f0-4442-93d2-5d1575a943a3)
 
 S-Type Instruction Format,
 The S-Type (Store-Type) instruction format in the RISC-V architecture is used for store operations, which involve writing data from a register to memory. This format includes a 12-bit immediate value split across two fields.
+
 The S-Type instruction format consists of the following fields:
+
 imm[11:5]: The upper 7 bits of the 12-bit immediate value.
+
 rs2: A 5-bit field specifying the second source register.
+
 rs1: A 5-bit field specifying the first source register.
+
 funct3: A 3-bit field specifying the function code for the operation.
+
 imm[4:0]: The lower 5 bits of the 12-bit immediate value.
+
 opcode: A 7-bit field specifying the opcode of the instruction.
 
 ![image](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/7425f71f-1aac-441f-90bb-d0bf82e57bba)
 
 B-Type Instruction Format,
 The B-Type (Branch-Type) instruction format in the RISC-V architecture is used for conditional branch instructions. This format includes a 12-bit immediate value split across several fields.
+
 The B-Type instruction format consists of the following fields:
+
 imm[12]: The 12th bit of the immediate value.
+
 imm[10:5]: Bits 10 to 5 of the immediate value.
+
 rs2: A 5-bit field specifying the second source register.
+
 rs1: A 5-bit field specifying the first source register.
+
 funct3: A 3-bit field specifying the function code for the operation.
+
 imm[4:1]: Bits 4 to 1 of the immediate value.
+
 imm[11]: The 11th bit of the immediate value.
+
 opcode: A 7-bit field specifying the opcode of the instruction.
 
 ![image](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/48e36c22-b600-4ed4-9925-23be24cae4e8)
 
 U-Type Instruction Format,
 The U-Type (Upper Immediate-Type) instruction format in the RISC-V architecture is used for instructions that involve a 20-bit immediate value that is shifted left by 12 bits. This format is used for instructions like LUI (Load Upper Immediate) and AUIPC (Add Upper Immediate to PC).
+
 The U-Type instruction format consists of the following fields:
+
 imm[31:12]: A 20-bit immediate value.
+
 rd: A 5-bit field specifying the destination register.
+
 opcode: A 7-bit field specifying the opcode of the instruction.
 
 ![image](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/f0f1f65d-678f-4f62-a267-b7618b88115d)
 
 J-Type Instruction Format,
 The J-Type (Jump-Type) instruction format in the RISC-V architecture is used for jump instructions, such as JAL (Jump and Link), which combines a large immediate value and an offset for branching.
+
 The J-Type instruction format consists of the following fields:
+
 imm[20]: The 20th bit of the immediate value.
+
 imm[10:1]: Bits 10 to 1 of the immediate value.
+
 imm[11]: The 11th bit of the immediate value.
+
 imm[19:12]: Bits 19 to 12 of the immediate value.
+
 rd: A 5-bit field specifying the destination register.
+
 opcode: A 7-bit field specifying the opcode of the instruction.
 
 ![image](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/563e4267-35fa-4485-8b9b-d4b6262d7026)
 
+### Now let's Compute the 32-bit Instruction code for the given Instructions,
+
+## 1.ADD r1,r2,r3
+This is a type R-Type Instruction Format.
+
+For the ADD instruction, the fields are as follows:
+
+opcode: 0110011 
+
+rd (destination register): 00001 (r1) 
+
+funct3: 000 
+
+rs1 (source register 1): 00010 (r2) 
+
+rs2 (source register 2): 00011 (r3) 
+
+funct7: 0000000 
+
+Finally, the computed 32-bit Instruction Code is 0000000 00011 00010 000 00001 0110011.
+
+## 2.SUB r3,r1,r2
+This is a R-Type Instruction Format.
+
+For the SUB instruction the fields are as follows:
+
+funct7: 0100000
+
+r1: 00010
+
+r2: 00001
+
+funct3: 000
+
+r3: 00011
+
+opcode: 0110011
+
+Finally, the computed 32-bit Instruction Code is 0100000 00010 00001 000 00011 0110011.
+
+## 3.AND r2,r1,r3
+The AND instruction is an R-type (register) instruction in the RISC-V ISA.
+
+For the AND instruction the fields are as follows:
+
+opcode: 0110011 
+
+funct3: 111 
+
+funct7: 0000000
+
+rd (r2): 00010
+
+rs1 (r1): 00001
+
+rs2 (r3): 00011
+
+Finally, the computed 32-bit Instruction Code is 0000000 00011 00001 111 00010 0110011.
+
+## 4.OR r8,r2,r5
+OR is an R-type instruction in RISC-V.
+
+For the OR instruction the fields are as follows:
+
+funct7: 0000000 
+
+r2: 00101 
+
+r5: 00010 
+
+funct3: 110 
+
+r8: 01000 
+
+opcode: 0110011 
+
+Finally, the computed 32-bit Instruction Code is 0000000 00101 00010 110 01000 0110011.
+
+## 5.XOR r8,r1,r4
+The XOR instruction is an R-type instruction.
+
+For the XOR instruction the fields are as follows:
+
+funct7: 0000000 
+
+r1: 00101 
+
+r4: 00010 
+
+funct3: 110 
+
+r8: 01000 
+
+opcode: 0110011 
+
+Finally, the computed 32-bit Instruction Code is 0000000 00100 00001 100 01000 0110011.
+
+## 6.SLT r10,r2,r4
+The SLT (Set Less Than) instruction is an R-type (Register) instruction in the RISC-V ISA.
+
+For the SLT instruction the fields are as follows:
+
+funct7: 0000000
+
+rs2: 00100 (binary for 4)
+
+rs1: 00010 (binary for 2)
+
+funct3: 010
+
+rd: 01010 (binary for 10)
+
+opcode: 0110011
+
+Finally, the computed 32-bit Instruction Code is 0000000 00100 00010 010 01010 0110011.
+
+## 7.ADDI r12,r3,5
+The RISC-V ADDI instruction is encoded in the I-type Format.ADDI is add immediate instruction.
+
+For the ADDI instruction the fields are as follows:
+
+imm[11:0]: 000000000101 
+
+r3: 00011 
+
+funct3: 000 
+
+r12: 01100 
+
+opcode: 0010011 
+
+Finally, the computed 32-bit Instruction Code is 000000000101 00011 000 01100 0010011.
+
+## 8.SW r3,r1,4
+For the instruction SW r3, r1, 4, which stands for "store word", the format typically follows the I-type (Immediate type) format in RISC-V.
+
+For the SW instruction the fields are as follows:
+
+Opcode for SW: This is typically 0100011 in binary for store instructions.
+
+rs2 (r3): Register r3 is encoded as r3 = 3, which in binary for a 5-bit field is 00011.
+
+rs1 (r1): Register r1 is encoded as r1 = 1, which in binary for a 5-bit field is 00001.
+
+Immediate (4): The immediate value 4 needs to be encoded in 12 bits. The binary representation of 4 is 000000000100.
+
+Finally, the computed 32-bit Instruction Code is 0100011 00011 00001 000000000100.
+
+## 9.SRL r16,r11,r2
+The RISC-V SRL instruction is encoded in the R-type Format.SRL is Shift Logically Right.
+
+For the SRL instruction the fields are as follows:
+
+opcode: 0b0110011 
+
+rd (destination register r16): 0b10000
+
+rs1 (source register r11): 0b01011
+
+rs2 (source register r2): 0b00010
+
+funct3 (logical right shift): 0b101
+
+funct7 (logical right shift): 0b0000000
+
+Finally, the computed 32-bit Instruction Code is 0000000 00010 01011 101 10000 0110011.
+
+## 10.BNE r0,r1,20
+The RISC-V BNE instruction is encoded in the B-type Format.BNE is Branch Not Equal.
+
+For the BNE instruction the fields are as follows:
+
+Opcode: 1100011
+
+Funct3: 001
+
+r0: 00000
+
+r1: 00001
+
+Imm: 000000000010100
+
+Finally, the computed 32-bit Instruction Code is 1100011 001 00000 00001 000000010100.
+
+## 11.BEQ r0,r0,15
+In the RISC-V instruction set architecture (ISA), the instruction BEQ r0, r0, 15 stands for "Branch if Equal" and it's a I-Type Format.
+
+For the BEQ instruction the fields are as follows:
+
+Opcode (1100011): 0001100 00000 000 00000
+
+rs1 (r0): 00000
+
+rd (r0): 00000 
+
+funct3 (BEQ): 000 
+
+Immediate (15): 000000000001111 (12 bits, sign-extended to 32-bit)
+
+Finally, the computed 32-bit Instruction Code is 000000001111 00000 000 00000 0001100.
+
+## 12.LW r13,r11,2
+In the RISC-V architecture, the LW (Load Word) instruction typically follows the I-type Format.
+
+For the BEQ instruction the fields are as follows:
+
+Opcode: 0000011
+
+Source Register (r11): 1011
+
+Destination Register (r13): 1101
+
+Immediate Value (2): 000000000010
+
+Finally, the computed 32-bit Instruction Code is 0000011 01011 01101 000000000000010.
+
+## 13.SLL r15,r11,r2
+RISC-V typically uses the R-type format for arithmetic/logical instructions like SLL.SLL is Shift Logical Left.
+
+For the SLL instruction the fields are as follows:
+
+funct7: 0000000
+
+rs2: 00010
+
+rs1: 00011
+
+funct3: 001
+
+rd: 01111
+
+opcode: 0110011
+
+Finally, the computed 32-bit Instruction Code is 0000000 00010 00011 001 01111 0110011.
+
+That's the end of the 4th task.
