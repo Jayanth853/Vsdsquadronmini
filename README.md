@@ -470,3 +470,74 @@ opcode: 0110011
 Finally, the computed 32-bit Instruction Code is 0000000 00010 00011 001 01111 0110011.
 
 That's the end of the 4th task.
+
+## Task 5: The Task is to create Verilog Code and Testbench for RISC-V and to verify the Functional Simulation for the Instructions and to generate Waveforms.
+
+The Steps to Create The Waveforms And Functional Verification,
+
+1. The First Process is to Install the iverilog and the Gtkwave for the generation of wave. It's done by the Command,
+   sudo apt-get update
+   sudo apt-get install iverilog gtkwave
+
+![Screenshot 2024-07-06 102023](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/67f610a0-e3b7-4db0-9fa8-3f6a0e1565eb)
+
+2. Then a directory needs to be created such as Jayanth_rv32i and the verilog code and the testbench are stored in Jayanth_rv32i.v and Jayanth_rv32i_tb.v     
+   respectively.
+3. The next process is to run and simulate by the command,
+   iverilog -o Jayanth_rv32i Jayanth_rv32i.v Jayanth_rv32i_tb.v
+4. To get the Output Waveform in GtkWave use the Command,
+   ./Jayanth_rv32i.v
+
+ ![Screenshot 2024-07-06 222651](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/aae21175-e59e-4e3a-9d92-c037113722c4)
+
+Now get the Waveform for each Instructions,
+
+## ADD r1,r2,r3
+
+![Gtk_ADD r1,r2,r3](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/51af51ae-3662-4667-bf82-b3e989d129a2)
+
+## SUB r3,r1,r2
+
+![Gtk_SUB r3,r1,r2](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/3a927093-14e3-494b-ac59-161e54fbd4dc)
+
+## AND r2,r1,r3
+
+![Gtk_AND r2,r1,r3](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/583c7b0c-ef16-4923-8863-7e4c78b278e5)
+
+## OR r8,r2,r5
+
+![Gtk_OR r8,r2,r5](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/f5ed1cba-6118-472b-a166-651cb958d1a9)
+
+## XOR r8,r1,r4
+
+![Gtk_XOR r8,r1,r4](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/6d0d0a18-efe0-494a-95c0-a8ebb6aa7392)
+
+## SLT r10,r2,r4
+
+![Gtk_SLT r10,r2,r4](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/03d96e79-b6ea-4e34-b590-225f7362b036)
+
+## ADDI r12,r3,r5
+
+![Gtk_ADDI r12,r3,r5](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/a4a5ffbe-9bea-4e6e-9242-07eb593bcdcc)
+
+## SW r3,r1,r4
+
+![Gtk_SW r3,r1,r4](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/2b6adcb4-fc55-42c4-a41f-6a4370f8bbf7)
+
+## SRL r16,r11,r2
+
+![Gtk_SRL r16,r11,r2](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/0da26479-a4ff-41bf-a74d-902b5a540cc3)
+
+## BEQ r0,r0,15
+
+![Gtk_BEQ r0,r0,15](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/56240575-0631-4900-bf0e-cb61330f57e2)
+
+## BNE r0,r1,20
+
+![Gtk_BNE r0,r1,20](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/98d6982f-2a55-498a-b8f9-c5cee223e0e0)
+
+## BLL r15,r11,r2
+
+![Gtk_BLL r15,r11,r2](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/283ec5fa-4620-4ef7-89e8-7de8c9b5c0a5)
+
+That's the Waveform of The Instructions And the end of 5th Task.
