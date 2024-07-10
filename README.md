@@ -582,7 +582,7 @@ The Keysight 33210A is the Clock source or the Function generator which provides
 The SN74LS294 is the Clock Frequency Divider Circuit, which divides the Clock Frequency of the Input Clock which is recieved from the Keysight 33210A, and divides that based on the Binary Values specified in the Programming Input Pins A,B,C,D where D is the MSB and A is the LSB.
 
 
-![SN74LS294](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/994bdc30-4b59-442f-8af2-fee0441435fb)
+![SN74LS294 IC](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/12be89d2-2859-411b-90fe-a900f9997960)
 
 
 ## Code 
