@@ -541,3 +541,144 @@ Now get the Waveform for each Instructions,
 ![Gtk_BLL r15,r11,r2](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/283ec5fa-4620-4ef7-89e8-7de8c9b5c0a5)
 
 That's the Waveform of The Instructions And the end of 5th Task.
+
+## Task 6: In this task we are developing a project overivew along with the Circuit Digram and their Pin connections.
+
+## Overview
+
+A digital clock divider circuit is a type of electronic circuit used to reduce the frequency of a clock signal. It is commonly employed in digital electronics to generate slower clock signals from a faster one. 
+To simplify it, first the circuit recieves an input clock signal with some frequency range and on recieving the Input clock signal the clock divider circuit divides the frequency of the clock signal based on the specified Division Factor.
+To understand with this an example, assume that an clock divider circuit recieves an input clock frequency of 100 MHz with a clock division factor of 10 will provide the output frequency of the clock signals as 10 MHz. 
+
+## Connections
+
+1. VSD Squadron Mini Board,
+2. Keysight 33210A (Clock Source or Function Generator),
+3. SN74LS294 (Clock Frequency Divider),
+4. Regulated Power Supply (+5V),
+5. Bread Board and Jumper Wires,
+6. BNC Connection Cable (for Keysight 33210A).
+
+## Circuit Specifications
+
+1.VSD Squadron Mini Board
+
+The Primary Function of this to provide the required power supply of 5V for the SN74LS294 and also to set the Division Factor with the help of GND and VCC. It also use the divided clock frequency for further process.
+
+
+![VSD Squadron Mini Board](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/34319042-9735-4031-a770-2e67e318d3cf)
+
+
+2.Keysight 33210A
+
+The Keysight 33210A is the Clock source or the Function generator which provides the required Square Wave which is fead as the Input Clock Source for the SN74LS294 IC. It has a range of upto 5 - 10 MHz of Frequency.
+
+
+![Keysight 33210A](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/92c39c8d-420d-44ae-8994-5d68fbe69230)
+
+
+3.SN74LS294
+
+The SN74LS294 is the Clock Frequency Divider Circuit, which divides the Clock Frequency of the Input Clock which is recieved from the Keysight 33210A, and divides that based on the Binary Values specified in the Programming Input Pins A,B,C,D where D is the MSB and A is the LSB.
+
+
+![SN74LS294](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/994bdc30-4b59-442f-8af2-fee0441435fb)
+
+
+## Code 
+
+// Example include for VSD Squadron Mini Board GPIO library
+
+    #include "vsd_gpio.h"
+
+    #define CLK2_PIN  5   // GPIO pin number for CLK2
+
+    #define CLR_PIN   11  // GPIO pin number for CLR
+
+    #define A_PIN     1   // GPIO pin number for A
+
+    #define B_PIN     2   // GPIO pin number for B
+
+    #define C_PIN     15  // GPIO pin number for C
+
+    #define D_PIN     14  // GPIO pin number for D
+
+    void setup() {
+
+    // Initialize GPIO pins as outputs
+    
+    gpio_init(CLK2_PIN, OUTPUT);
+    
+    gpio_init(CLR_PIN, OUTPUT);
+    
+    gpio_init(A_PIN, OUTPUT);
+    
+    gpio_init(B_PIN, OUTPUT);
+    
+    gpio_init(C_PIN, OUTPUT);
+    
+    gpio_init(D_PIN, OUTPUT);
+    
+    gpio_write(CLK2_PIN, LOW);  
+    
+    gpio_write(CLR_PIN, HIGH); 
+    
+    //Example: Set programming inputs for division ratio 10 (A=0, B=1, C=0, D=1)
+    
+    gpio_write(A_PIN, LOW);
+    
+    gpio_write(B_PIN, HIGH);
+    
+    gpio_write(C_PIN, LOW);
+    
+    gpio_write(D_PIN, HIGH);
+    }
+
+
+    int main() {
+
+    setup();
+    
+    while (1) {
+    
+        gpio_write(CLK2_PIN, HIGH);  // Start generating clock signal
+        
+        delay_ms(1000);  // Example delay for 1 second 
+        
+        gpio_write(CLK2_PIN, LOW);   // Stop generating clock signal
+        
+        delay_ms(1000);  // Example delay for 1 second 
+    }
+    
+    
+    return 0;
+    }
+
+
+This Code is referred from the AI Tool.
+
+## PIN Connections
+
+1. Keysight 33210A
+   1. Connect the Red colour of the BNC Cable to the (CLK 2) Pin 5 of SN74LS294 and Black colour to the (GND) pin 8 of SN74LS294.
+   2. The Keysight 33210A is set to Square Wave with the desired Frequency range.
+
+3. SN74LS294
+   1. The Pin 5 (CLK 2) is Connected to Red Colour BNC cable which is connected to the output port of the Keysight 33210A.
+   2. To prevent circuit from resetting the Pin 11 (CLR Bar) is connected to +5 VCC of the VSD Squadron Mini Board.
+   3. The Programming Input Pins, Pin 10 (A), Pin 1 (B), Pin 15 (C), Pin 14 (D) are set to the Binary Values 1010 in the order of Pins D,C,B,A where D is the MSB and A is the LSB. This will set the Dvision Factor to 10.
+   4. The Pin 4 (CLK 1) is not used, so it's connect to the +5 VCC of the VSD Squadron Mini Board.
+   5. The Pin 7 (Q) Output Pin is Connected to any of the Input Pin here (PD0) of the VSD Squadron Mini Board.
+  
+3. VSD Squadron Mini Board
+   1. The +5 VCC Pin is connected to the Pin 1 (B), Pin 4 (CLK 1), Pin 14 (D), Pin 11 (CLR Bar) of the SN74LS294.
+   2. The GND Pin is connected to the Pin 8 (GND), Pin 10 (A), Pin 15 (C).
+   3. The PD0 Pin is connected to the Pin 7 (Q).
+
+## Circuit Diagram
+
+The Circuit Diagram for the Digital Clock Divider Circuit using the Keysight 33210A, SN74LS294 and VSD Squadron Mini Board is below.
+
+![Clock Divider Circuit Circuit Diagram](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/0bbe69d9-2c24-4274-92a0-106fa85ddc91)
+
+That's the end of Task 6.
