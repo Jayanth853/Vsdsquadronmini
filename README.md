@@ -587,98 +587,74 @@ The SN74LS294 is the Clock Frequency Divider Circuit, which divides the Clock Fr
 
 ## Code 
 
-// Example include for VSD Squadron Mini Board GPIO library
+#include <ch32v00x.h>
+#include <debug.h>
 
-    #include "vsd_gpio.h"
+#define LED_GPIO_PORT GPIOD
+#define LED_GPIO_PIN GPIO_Pin_6
+#define LED_CLOCK_ENABLE RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOD, ENABLE)
+#define DIVIDER_FACTOR 1000000 // Adjust this to change the divider factor
 
-    #define CLK2_PIN  5   // GPIO pin number for CLK2
+void NMI_Handler(void) _attribute_((interrupt("WCH-Interrupt-fast")));
+void HardFault_Handler(void) _attribute_((interrupt("WCH-Interrupt-fast")));
 
-    #define CLR_PIN   11  // GPIO pin number for CLR
+int main(void)
+{
+    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1);
+    SystemCoreClockUpdate();
 
-    #define A_PIN     1   // GPIO pin number for A
+    GPIO_InitTypeDef GPIO_InitStructure = {0};
 
-    #define B_PIN     2   // GPIO pin number for B
+    LED_CLOCK_ENABLE;
+    GPIO_InitStructure.GPIO_Pin = LED_GPIO_PIN;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+    GPIO_Init(LED_GPIO_PORT, &GPIO_InitStructure);
 
-    #define C_PIN     15  // GPIO pin number for C
+    uint32_t counter = 0;
+    uint8_t ledState = 0;
 
-    #define D_PIN     14  // GPIO pin number for D
-
-    void setup() {
-
-    // Initialize GPIO pins as outputs
-    
-    gpio_init(CLK2_PIN, OUTPUT);
-    
-    gpio_init(CLR_PIN, OUTPUT);
-    
-    gpio_init(A_PIN, OUTPUT);
-    
-    gpio_init(B_PIN, OUTPUT);
-    
-    gpio_init(C_PIN, OUTPUT);
-    
-    gpio_init(D_PIN, OUTPUT);
-    
-    gpio_write(CLK2_PIN, LOW);  
-    
-    gpio_write(CLR_PIN, HIGH); 
-    
-    //Example: Set programming inputs for division ratio 10 (A=0, B=1, C=0, D=1)
-    
-    gpio_write(A_PIN, LOW);
-    
-    gpio_write(B_PIN, HIGH);
-    
-    gpio_write(C_PIN, LOW);
-    
-    gpio_write(D_PIN, HIGH);
+    while (1)
+    {
+        counter++;
+        if (counter >= DIVIDER_FACTOR)
+        {
+            counter = 0;
+            ledState ^= 1; // Toggle LED state
+            GPIO_WriteBit(LED_GPIO_PORT, LED_GPIO_PIN, ledState);
+        }
     }
+}
 
-
-    int main() {
-
-    setup();
-    
-    while (1) {
-    
-        gpio_write(CLK2_PIN, HIGH);  // Start generating clock signal
-        
-        delay_ms(1000);  // Example delay for 1 second 
-        
-        gpio_write(CLK2_PIN, LOW);   // Stop generating clock signal
-        
-        delay_ms(1000);  // Example delay for 1 second 
+void NMI_Handler(void) {}
+void HardFault_Handler(void)
+{
+    while (1)
+    {
     }
-    
-    
-    return 0;
-    }
+}
 
 
 This Code is referred from the AI Tool.
 
 ## PIN Connections
-
-1. Keysight 33210A
-   1. Connect the Red colour of the BNC Cable to the (CLK 2) Pin 5 of SN74LS294 and Black colour to the (GND) pin 8 of SN74LS294.
-   2. The Keysight 33210A is set to Square Wave with the desired Frequency range.
-
-3. SN74LS294
-   1. The Pin 5 (CLK 2) is Connected to Red Colour BNC cable which is connected to the output port of the Keysight 33210A.
-   2. To prevent circuit from resetting the Pin 11 (CLR Bar) is connected to +5 VCC of the VSD Squadron Mini Board.
-   3. The Programming Input Pins, Pin 10 (A), Pin 1 (B), Pin 15 (C), Pin 14 (D) are set to the Binary Values 1010 in the order of Pins D,C,B,A where D is the MSB and A is the LSB. This will set the Dvision Factor to 10.
-   4. The Pin 4 (CLK 1) is not used, so it's connect to the +5 VCC of the VSD Squadron Mini Board.
-   5. The Pin 7 (Q) Output Pin is Connected to any of the Input Pin here (PD0) of the VSD Squadron Mini Board.
   
-3. VSD Squadron Mini Board
-   1. The +5 VCC Pin is connected to the Pin 1 (B), Pin 4 (CLK 1), Pin 14 (D), Pin 11 (CLR Bar) of the SN74LS294.
-   2. The GND Pin is connected to the Pin 8 (GND), Pin 10 (A), Pin 15 (C).
-   3. The PD0 Pin is connected to the Pin 7 (Q).
+1. VSD Squadron Mini Board
+   1. The Power supply is given by the USB Cable connected to Laptop
+   2. The GND Pin is connected to the Breadboard where the resistor is also connected.
+   3. An LED is Connected to Display the Output of the Clock Divider Circuit.
+
+## Working
+Here, I have Specified the the Division Factor as 1000000 (1 micro Second) then the LED will toggle for every 1 second and it changes according to the Division Factor.
 
 ## Circuit Diagram
 
 The Circuit Diagram for the Digital Clock Divider Circuit using the Keysight 33210A, SN74LS294 and VSD Squadron Mini Board is below.
 
 ![Clock Divider Circuit Circuit Diagram](https://github.com/Jayanth853/Vsdsquadronmini/assets/173602478/0bbe69d9-2c24-4274-92a0-106fa85ddc91)
+
+## The video for my Project
+
+[Clock_Divider] (https://drive.google.com/file/d/1UU1C80B8_MWSvUckxp1j5EbarCCp2K3i/view?usp=sharing)
 
 That's the end of Task 6.
